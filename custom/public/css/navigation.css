@@ -1,0 +1,58 @@
+.navbar {
+  padding: 10px 150px 10px 150px !important;
+  background-color: #414656 !important;
+  font-family: "Acme", sans-serif !important;
+}
+
+.navbar-brand {
+  color: white !important;
+  display: flex !important;
+  align-items: center !important;
+  font-size: 1.2rem !important;
+}
+
+.navbar-brand:hover {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.mini-logo {
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+}
+
+.nav-link {
+  color: white !important;
+  font-size: larger;
+}
+
+.nav-link:hover {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+nav .custom-nav-link {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.nav-link-avatar {
+  display: inline;
+}
+
+.login-buttom {
+  color: white;
+  padding: 9px 25px;
+  background-color: rgba(0, 136, 169, 1);
+  border: none;
+  border-radius: 50px;
+}
+
+.login-buttom:hover {
+  background-color: rgba(0, 136, 169, 0.8);
+}
+
+/*explorer navigation*/
+.explorer-nav-link {
+  color: #414656 !important;
+  font-family: "Acme", sans-serif !important;
+}

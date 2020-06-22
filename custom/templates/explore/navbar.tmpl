@@ -1,0 +1,30 @@
+<br>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link explorer-nav-link  {{if .PageIsExploreRepositories}}active{{end}}" href="{{AppSubURL}}/explore/repos">{{.i18n.Tr "explore.repos"}}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link explorer-nav-link  {{if .PageIsExploreUsers}}active{{end}}" href="{{AppSubURL}}/explore/users">{{.i18n.Tr "explore.users"}}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link explorer-nav-link  {{if .PageIsExploreOrganizations}}active{{end}}" href="{{AppSubURL}}/explore/organizations">{{.i18n.Tr "explore.organizations"}}</a>
+  </li>
+</ul>
+
+<!--original gogs's explorer nav-->
+<!--
+<div>
+	<div>
+		<div class="header item">{{.i18n.Tr "explore"}}</div>
+		<a class="{{if .PageIsExploreRepositories}}active{{end}} item" href="{{AppSubURL}}/explore/repos">
+			<span class="octicon octicon-repo"></span> {{.i18n.Tr "explore.repos"}}
+		</a>
+		<a class="{{if .PageIsExploreUsers}}active{{end}} item" href="{{AppSubURL}}/explore/users">
+			<span class="octicon octicon-person"></span> {{.i18n.Tr "explore.users"}}
+		</a>
+		<a class="{{if .PageIsExploreOrganizations}}active{{end}} item" href="{{AppSubURL}}/explore/organizations">
+			<span class="octicon octicon-organization"></span> {{.i18n.Tr "explore.organizations"}}
+		</a>
+	</div>
+</div>
+-->

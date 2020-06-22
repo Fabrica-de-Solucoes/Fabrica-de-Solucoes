@@ -1,0 +1,27 @@
+.main-footer {
+  margin: 0;
+  background-color: #414656;
+  padding: 30px 150px 3px 150px;
+  color: white;
+}
+
+.main-footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-menu {
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-menu a {
+  font-family: "Acme", sans-serif;
+  margin-right: 5%;
+  font-size: 1.2rem;
+}
+
+.footer-copyritgh {
+  text-align: center;
+  font-size: 0.8rem;
+}
