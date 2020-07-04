@@ -4,18 +4,19 @@
 		 <div class="col align-self-center">
 				<form class="form-signin" action="{{.Link}}" method="post">
 					{{.CSRFTokenHTML}}
-					<h3 class="h3 mb-3 font-weight-normal">
+					<h3 class="ui top attached header">
 						{{.i18n.Tr "sign_in"}}
 					</h3>
 					<div class="ui attached segment">
 						{{template "base/alert" .}}
 						<div class="required inline field {{if .Err_UserName}}error{{end}}">
-							<label for="col-sm-2 col-form-label">{{.i18n.Tr "home.uname_holder"}}</label>
-							<input class="form-control-plaintext" id="user_name" name="user_name" placeholder="{{.i18n.Tr "home.uname_holder"}}" value="{{.user_name}}" autofocus required>
+							
+							<input class="form-control-plaintext" id="user_name" name="user_name" placeholder="{{.i18n.Tr "home.uname_holder"}}" value="{{.user_name}}" autofocus required>    
+
 						</div>
 						<div class="required inline field {{if .Err_Password}}error{{end}}">
-							<label for="password">{{.i18n.Tr "password"}}</label>
-							<input id="password" name="password" type="password" autocomplete="off" value="{{.password}}" required>
+							
+							<input id="password" name="password" type="password" autocomplete="off" value="{{.password}}" placeholder="digite a senha" required>
 						</div>
 						{{if .LoginSources}}
 							<div class="required inline field {{if .Err_LoginSource}}error{{end}}">
@@ -41,9 +42,9 @@
 						{{end}}
 						<div class="inline field">
 							<label></label>
-							<div class="ui checkbox">
+							<div class="form-check">
 								<label>{{.i18n.Tr "auth.remember_me"}}</label>
-								<input name="remember" type="checkbox">
+								<input class="form-check-input" name="remember" type="checkbox">
 							</div>
 						</div>
 
@@ -64,4 +65,5 @@
 			</div>
 		</div>
 	</div>
+	
 {{template "base/footer" .}}
