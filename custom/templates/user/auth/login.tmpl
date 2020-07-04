@@ -1,19 +1,17 @@
 {{template "base/head" .}}
-
 	<div class="user signin">
-		<div class="ui middle very relaxed page grid">
-			<div class="column">
-				<form class="ui form" action="{{.Link}}" method="post">
+		<div class="text-center">
+		 <div class="col align-self-center">
+				<form class="form-signin" action="{{.Link}}" method="post">
 					{{.CSRFTokenHTML}}
-					<h3 class="ui top attached header">
+					<h3 class="h3 mb-3 font-weight-normal">
 						{{.i18n.Tr "sign_in"}}
 					</h3>
 					<div class="ui attached segment">
 						{{template "base/alert" .}}
 						<div class="required inline field {{if .Err_UserName}}error{{end}}">
-							<!--<label for="user_name">{{.i18n.Tr "home.uname_holder"}}</label>-->
-							<label for="user_name"> </label>
-							<input id="user_name" name="user_name" placeholder="{{.i18n.Tr "home.uname_holder"}}" value="{{.user_name}}" autofocus required>
+							<label for="col-sm-2 col-form-label">{{.i18n.Tr "home.uname_holder"}}</label>
+							<input class="form-control-plaintext" id="user_name" name="user_name" placeholder="{{.i18n.Tr "home.uname_holder"}}" value="{{.user_name}}" autofocus required>
 						</div>
 						<div class="required inline field {{if .Err_Password}}error{{end}}">
 							<label for="password">{{.i18n.Tr "password"}}</label>
@@ -51,7 +49,7 @@
 
 						<div class="inline field">
 							<label></label>
-							<button class="ui green button">{{.i18n.Tr "sign_in"}}</button>
+							<button class="btn btn-info">{{.i18n.Tr "sign_in"}}</button>
 							<a href="{{AppSubURL}}/user/forget_password">{{.i18n.Tr "auth.forget_password"}}</a>
 						</div>
 						{{if .ShowRegistrationButton}}
@@ -62,8 +60,8 @@
 						{{end}}
 					</div>
 				</form>
+				</div>
 			</div>
 		</div>
 	</div>
-	
 {{template "base/footer" .}}
