@@ -18,18 +18,18 @@
 								{{.ContextUser.ShortName 20}}
 							</span>
 							<i class="dropdown icon"></i>
-							<div class="menu">
-								<div class="item" data-value="{{.LoggedUser.ID}}">
+								<select class="custom-select">
+								<option class="item" value="{{.LoggedUser.ID}}">
 									<img class="ui mini image" src="{{.LoggedUser.RelAvatarLink}}">
 									{{.LoggedUser.ShortName 20}}
-								</div>
+								</option>
 								{{range .Orgs}}
-									<div class="item" data-value="{{.ID}}">
+									<option class="item" value="{{.ID}}">
 										<img class="ui mini image" src="{{.RelAvatarLink}}">
 										{{.ShortName 20}}
-									</div>
+									</option>
 								{{end}}
-							</div>
+							</select>
 						</div>
 					</div>
 
@@ -52,7 +52,7 @@
 					</div>
 					<div class="inline field {{if .Err_Description}}error{{end}}">
 						<label for="description">{{.i18n.Tr "repo.repo_desc"}}</label>
-						<textarea class="autosize" id="description" name="description" rows="3">{{.description}}</textarea>
+						<textarea class="form-control" id="description" name="description" rows="3">{{.description}}</textarea>
 						<span class="help">{{.i18n.Tr "repo.repo_description_helper" | Safe}}</span>
 						<span class="help">{{.i18n.Tr "repo.repo_description_length"}}: <span id="descLength"></span></span>
 					</div>
@@ -64,11 +64,11 @@
 						<div class="ui multiple search normal selection dropdown">
 							<input type="hidden" name="gitignores" value="{{.gitignores}}">
 							<div class="default text">{{.i18n.Tr "repo.repo_gitignore_helper"}}</div>
-							<div class="menu">
+							<select class="custom-select">
 								{{range .Gitignores}}
-									<div class="item" data-value="{{.}}">{{.}}</div>
+									<option class="item" value="{{.}}">{{.}}</option>
 								{{end}}
-							</div>
+							</select>
 						</div>
 					</div>
 					<div class="inline field">
@@ -76,11 +76,11 @@
 						<div class="ui search selection dropdown">
 							<input type="hidden" name="license" value="{{.license}}">
 							<div class="default text">{{.i18n.Tr "repo.license_helper"}}</div>
-							<div class="menu">
+							<select class="custom-select">
 								{{range .Licenses}}
-									<div class="item" data-value="{{.}}">{{.}}</div>
+									<option class="item" value="{{.}}">{{.}}</option>
 								{{end}}
-							</div>
+							</select>
 						</div>
 					</div>
 
@@ -89,9 +89,9 @@
 						<div class="ui selection dropdown">
 							<input type="hidden" name="readme" value="{{.readme}}">
 							<div class="default text">{{.i18n.Tr "repo.readme_helper"}}</div>
-							<div class="menu">
+								<select class="custom-select">
 								{{range .Readmes}}
-									<div class="item" data-value="{{.}}">{{.}}</div>
+									<option class="item" value="{{.}}">{{.}}</option>
 								{{end}}
 							</div>
 						</div>
@@ -105,7 +105,7 @@
 
 					<div class="inline field">
 						<label></label>
-						<button class="ui green button">
+						<button class="btn btn-info">
 							{{.i18n.Tr "repo.create_repo"}}
 						</button>
 						<a class="ui button" href="{{AppSubURL}}/">{{.i18n.Tr "cancel"}}</a>
