@@ -1,12 +1,15 @@
 {{template "base/head" .}}
+
 <div class="user signup">
 	<div class="text-center">
 		<div class="col align-self-center">
 			<form class="ui form" action="{{.Link}}" method="post">
 				{{.CSRFTokenHTML}}
-				<h3 class="ui top attached header">
+<font color="White">
+				<h3 class="cabe">
 					{{.i18n.Tr "sign_up"}}
 				</h3>
+</font>
 				<div class="ui attached segment">
 					{{template "base/alert" .}}
 					{{if .DisableRegistration}}

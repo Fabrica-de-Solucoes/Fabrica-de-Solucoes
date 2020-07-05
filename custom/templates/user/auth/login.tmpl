@@ -1,21 +1,24 @@
 {{template "base/head" .}}
 	<div class="user signin">
 		<div class="text-center">
+		
 		 <div class="col align-self-center">
 				<form class="form-signin" action="{{.Link}}" method="post">
 					{{.CSRFTokenHTML}}
-					<h3 class="ui top attached header">
+					<font color="White">
+					<h3 class="cabe">
 						{{.i18n.Tr "sign_in"}}
 					</h3>
+					</font>
 					<div class="ui attached segment">
 						{{template "base/alert" .}}
 						<div class="required inline field {{if .Err_UserName}}error{{end}}">
-							
-							<input class="form-control-plaintext" id="user_name" name="user_name" placeholder="{{.i18n.Tr "home.uname_holder"}}" value="{{.user_name}}" autofocus required>    
+							<label for="Nome">{{.i18n.Tr "username"}}</label>
+							<input class="form25" id="user_name"  name="user_name" placeholder="{{.i18n.Tr "home.uname_holder"}}" value="{{.user_name}}" autofocus required>    
 
 						</div>
-						<div class="required inline field {{if .Err_Password}}error{{end}}">
-							
+						<div class="required inline field {{if .Err_Password}}error{{end}}" >
+							<label for="Senha">{{.i18n.Tr "password"}}</label>
 							<input id="password" name="password" type="password" autocomplete="off" value="{{.password}}" placeholder="digite a senha" required>
 						</div>
 						{{if .LoginSources}}
@@ -40,11 +43,13 @@
 								</div>
 							</div>
 						{{end}}
+						
 						<div class="inline field">
 							<label></label>
-							<div class="form-check">
+
+							<div class="f3">
 								<label>{{.i18n.Tr "auth.remember_me"}}</label>
-								<input class="form-check-input" name="remember" type="checkbox">
+								<input class="f3" name="remember" type="checkbox">
 							</div>
 						</div>
 
