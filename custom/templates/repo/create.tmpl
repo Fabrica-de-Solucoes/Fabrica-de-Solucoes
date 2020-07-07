@@ -1,119 +1,120 @@
 {{template "base/head" .}}
+
 <div class="repository new repo">
 	<div class="ui middle very relaxed page grid">
-		<div class="column">
-			<form class="ui form" action="{{.Link}}" method="post">
-				{{.CSRFTokenHTML}}
-				<h3 class="ui top attached header">
-					{{.i18n.Tr "new_repo"}}
-				</h3>
-				<div class="ui attached segment">
-					{{template "base/alert" .}}
-					<div class="inline required field {{if .Err_Owner}}error{{end}}">
-						<label>{{.i18n.Tr "repo.owner"}}</label>
-						<div class="ui selection owner dropdown">
-							<input type="hidden" id="user_id" name="user_id" value="{{.ContextUser.ID}}" required>
-							<span class="text">
-								<img class="ui mini image" src="{{.ContextUser.RelAvatarLink}}">
-								{{.ContextUser.ShortName 20}}
-							</span>
-							<i class="dropdown icon"></i>
-								<select class="custom-select">
-								<option class="item" value="{{.LoggedUser.ID}}">
-									<img class="ui mini image" src="{{.LoggedUser.RelAvatarLink}}">
-									{{.LoggedUser.ShortName 20}}
-								</option>
-								{{range .Orgs}}
-									<option class="item" value="{{.ID}}">
-										<img class="ui mini image" src="{{.RelAvatarLink}}">
-										{{.ShortName 20}}
-									</option>
-								{{end}}
-							</select>
-						</div>
-					</div>
+		<div class="">
+			<form class="form-inline" action="{{.Link}}" method="post">
+				<div class="card text-center">
+					<div class="card-header">Novo Repositório</div>
+					<div class="card-body">
+						{{.CSRFTokenHTML}}
+						<div class="ui attached segment">
+							{{template "base/alert" .}}
+							<div class="inline required field {{if .Err_Owner}}error{{end}}">
+								<label >{{.i18n.Tr "repo.owner"}}</label>
+								<div class="ui selection owner dropdown">
+									<input type="hidden" id="user_id" name="user_id" value="{{.ContextUser.ID}}" required>
+									<span class="text">
+										<img class="mini-image" src="{{.ContextUser.RelAvatarLink}}">
+										{{.ContextUser.ShortName 20}}
+									</span>
+									<i class="dropdown icon"></i>
+									<select class="custom-select">
+										<option class="item" value="{{.LoggedUser.ID}}">
+											<img class="mini-image" src="{{.LoggedUser.RelAvatarLink}}">
+											{{.LoggedUser.ShortName 20}}
+										</option>
+										{{range .Orgs}}
+											<option class="item" value="{{.ID}}">
+												<img class="mini-image" src="{{.RelAvatarLink}}">
+												{{.ShortName 20}}
+											</option>
+										{{end}}
+									</select>
+								</div>
+							</div>
+							<div class="inline required field {{if .Err_RepoName}}error{{end}}">
+								<label  for="repo_name">{{.i18n.Tr "repo.repo_name"}}</label>
+								<div class="col-sm-12">
+									<input class="form-control mx-sm-3" id="repo_name" name="repo_name" value="{{.repo_name}}" autofocus required>
+								</div>
+								<small id="passwordHelpBlock" class="form-text text-muted">
+									{{.i18n.Tr "repo.repo_name_helper" | Safe}}
+								</small>
+							</div>
+							<div class="form-check form-check-inline">
+								<label >{{.i18n.Tr "repo.visibility"   }}</label>
+								<label> : </label>
+								<div class="form-check form-check-inline">
+									{{if .IsForcedPrivate}}
+										<input class="form-check-input" name="private" type="checkbox" checked readonly>
+										<label class="form-check-label" >{{.i18n.Tr "repo.visiblity_helper_forced" | Safe}}</label>
+									{{else}}
+										<input class="form-check-input" name="private" type="checkbox" {{if .private}}checked{{end}}>
+										<label class="form-check-label" >{{.i18n.Tr "repo.visiblity_helper" | Safe}}</label>
+									{{end}}
+								</div>
+							</div>
+							<div class="inline field {{if .Err_Description}}error{{end}}">
+								<label  for="description">{{.i18n.Tr "repo.repo_desc"}}</label>
+								<textarea class="form-control" id="description" name="description" rows="3">{{.description}}</textarea>
+								<small id="passwordHelpBlock" class="form-text text-muted"  >{{.i18n.Tr "repo.repo_description_helper" | Safe}}</small>
+								<small id="passwordHelpBlock" class="form-text text-muted"  >{{.i18n.Tr "repo.repo_description_length"}}: <small id="passwordHelpBlock" class="form-text text-muted" id="descLength"></small>
+								</small>
+							</div>
+							<div class="dropdown-divider"></div>
+							<div class="inline field">
+								<label >.gitignore</label>
+								<div class="ui multiple search normal selection dropdown">
 
-					<div class="inline required field {{if .Err_RepoName}}error{{end}}">
-						<label for="repo_name">{{.i18n.Tr "repo.repo_name"}}</label>
-						<input id="repo_name" name="repo_name" value="{{.repo_name}}" autofocus required>
-						<span class="help">{{.i18n.Tr "repo.repo_name_helper" | Safe}}</span>
-					</div>
-					<div class="inline field">
-						<label>{{.i18n.Tr "repo.visibility"}}</label>
-						<div class="ui checkbox">
-							{{if .IsForcedPrivate}}
-								<input name="private" type="checkbox" checked readonly>
-								<label>{{.i18n.Tr "repo.visiblity_helper_forced" | Safe}}</label>
-							{{else}}
-								<input name="private" type="checkbox" {{if .private}}checked{{end}}>
-								<label>{{.i18n.Tr "repo.visiblity_helper" | Safe}}</label>
-							{{end}}
-						</div>
-					</div>
-					<div class="inline field {{if .Err_Description}}error{{end}}">
-						<label for="description">{{.i18n.Tr "repo.repo_desc"}}</label>
-						<textarea class="form-control" id="description" name="description" rows="3">{{.description}}</textarea>
-						<span class="help">{{.i18n.Tr "repo.repo_description_helper" | Safe}}</span>
-						<span class="help">{{.i18n.Tr "repo.repo_description_length"}}: <span id="descLength"></span></span>
-					</div>
+									<select class="custom-select">
+										{{range .Gitignores}}
+											<option class="item" value="{{.}}">{{.}}</option>
+										{{end}}
+									</select>
+								</div>
+							</div>
+							<div class="inline field">
+								<label >{{.i18n.Tr "repo.license"}}</label>
+								<div class="ui search selection dropdown">
+									<select class="custom-select">
+										{{range .Licenses}}
+											<option class="item" value="{{.}}">{{.}}</option>
+										{{end}}
+									</select>
+								</div>
+							</div>
+							<div class="inline field">
+								<label >{{.i18n.Tr "repo.readme"}}
+									<a target="_blank" rel="noopener noreferrer" href="https://github.com/gogits/go-gogs-client/wiki/Repositories#litte-notes-on-readme-template">
+										<span class="octicon octicon-question"></span></a>
+								</label>
+								<div class="ui selection dropdown">
 
-					<div class="ui divider"></div>
-
-					<div class="inline field">
-						<label>.gitignore</label>
-						<div class="ui multiple search normal selection dropdown">
-							<input type="hidden" name="gitignores" value="{{.gitignores}}">
-							<div class="default text">{{.i18n.Tr "repo.repo_gitignore_helper"}}</div>
-							<select class="custom-select">
-								{{range .Gitignores}}
-									<option class="item" value="{{.}}">{{.}}</option>
-								{{end}}
-							</select>
-						</div>
-					</div>
-					<div class="inline field">
-						<label>{{.i18n.Tr "repo.license"}}</label>
-						<div class="ui search selection dropdown">
-							<input type="hidden" name="license" value="{{.license}}">
-							<div class="default text">{{.i18n.Tr "repo.license_helper"}}</div>
-							<select class="custom-select">
-								{{range .Licenses}}
-									<option class="item" value="{{.}}">{{.}}</option>
-								{{end}}
-							</select>
-						</div>
-					</div>
-
-					<div class="inline field">
-						<label>{{.i18n.Tr "repo.readme"}} <a target="_blank" rel="noopener noreferrer" href="https://github.com/gogits/go-gogs-client/wiki/Repositories#litte-notes-on-readme-template"><span class="octicon octicon-question"></span></a></label>
-						<div class="ui selection dropdown">
-							<input type="hidden" name="readme" value="{{.readme}}">
-							<div class="default text">{{.i18n.Tr "repo.readme_helper"}}</div>
-								<select class="custom-select">
-								{{range .Readmes}}
-									<option class="item" value="{{.}}">{{.}}</option>
-								{{end}}
+									<select class="custom-select">
+										{{range .Readmes}}
+											<option class="item" value="{{.}}">{{.}}</option>
+										{{end}}
+									</div>
+								</div>
+							</div>
+							<div class="inline field">
+								<div class="ui checkbox" id="auto-init">
+									<input class="hidden" name="auto_init" type="checkbox" tabindex="0" {{if .auto_init}}checked{{end}}>
+									<small id="passwordHelpBlock" class="form-text text-muted" >{{.i18n.Tr "repo.auto_init"}}</small>
+								</div>
+							</div>
+							<div class="inline field">
+								<label ></label>
+								<button class="btn btn-info">
+									{{.i18n.Tr "repo.create_repo"}}
+								</button>
+								<a class="ui button" href="{{AppSubURL}}/">{{.i18n.Tr "cancel"}}</a>
 							</div>
 						</div>
-					</div>
-					<div class="inline field">
-						<div class="ui checkbox" id="auto-init">
-							<input class="hidden" name="auto_init" type="checkbox" tabindex="0" {{if .auto_init}}checked{{end}}>
-							<label>{{.i18n.Tr "repo.auto_init"}}</label>
-						</div>
-					</div>
-
-					<div class="inline field">
-						<label></label>
-						<button class="btn btn-info">
-							{{.i18n.Tr "repo.create_repo"}}
-						</button>
-						<a class="ui button" href="{{AppSubURL}}/">{{.i18n.Tr "cancel"}}</a>
-					</div>
+					</form>
 				</div>
-			</form>
+			</div>
 		</div>
-	</div>
-</div>
 
-{{template "base/footer" .}}
+		{{template "base/footer" .}}

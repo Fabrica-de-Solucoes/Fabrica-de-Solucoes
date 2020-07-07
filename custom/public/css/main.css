@@ -12,18 +12,33 @@ body {
 }
 
 form {
-  width: 500px;
-  height: 500px;
+  width: 40%;
+  height: 100%;
   margin-left: auto;
   margin-right: auto;
   background-color: #FFF;
   border-radius: 10px;
   padding: 25px;
 border-style: solid;
-border-width: 10px;
+border-width: 0px;
 
 
 }
+
+form.login{
+  height: 480px;
+}
+
+h3.login {
+  width: 40%;
+}
+img.mini-image{
+  width: 35px;
+  height: auto;
+  font-size: .78571429rem;
+
+}
+
 .cabe{
  background: rgb(0, 136, 169);
   

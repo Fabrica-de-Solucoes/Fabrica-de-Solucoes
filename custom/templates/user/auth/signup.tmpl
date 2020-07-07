@@ -3,57 +3,59 @@
 <div class="user signup">
 	<div class="text-center">
 		<div class="col align-self-center">
-			<form class="ui form" action="{{.Link}}" method="post">
+			<form class="ui form login" action="{{.Link}}" method="post">
 				{{.CSRFTokenHTML}}
-<font color="White">
-				<h3 class="cabe">
-					{{.i18n.Tr "sign_up"}}
-				</h3>
-</font>
-				<div class="ui attached segment">
-					{{template "base/alert" .}}
-					{{if .DisableRegistration}}
-						<p>{{.i18n.Tr "auth.disable_register_prompt"}}</p>
-					{{else}}
-						<div class="required inline field {{if .Err_UserName}}error{{end}}">
-							<label for="user_name">{{.i18n.Tr "username"}}</label>
-							<input id="user_name" name="user_name" value="{{.user_name}}" autofocus required>
-						</div>
-						<div class="required inline field {{if .Err_Email}}error{{end}}">
-							<label for="email">{{.i18n.Tr "email"}}</label>
-							<input id="email" name="email" type="email" value="{{.email}}" required>
-						</div>
-						<div class="required inline field {{if .Err_Password}}error{{end}}">
-							<label for="password">{{.i18n.Tr "password"}}</label>
-							<input id="password" name="password" type="password" value="{{.password}}" required>
-						</div>
-						<div class="required inline field {{if .Err_Password}}error{{end}}">
-							<label for="retype">{{.i18n.Tr "re_type"}}</label>
-							<input id="retype" name="retype" type="password" value="{{.retype}}" required>
-						</div>
-						{{if .EnableCaptcha}}
-							<div class="inline field">
-								<label></label>
-								{{.Captcha.CreateHtml}}
-							</div>
-							<div class="required inline field {{if .Err_Captcha}}error{{end}}">
-								<label for="captcha">{{.i18n.Tr "captcha"}}</label>
-								<input id="captcha" name="captcha" value="{{.captcha}}" autocomplete="off">
-							</div>
-						{{end}}
+				<center>
+					<font color="White">
+						<h3 class="cabe login">
+							{{.i18n.Tr "sign_up"}}
+						</h3>
+					</font>
+					<center>
+						<div class="ui attached segment">
+							{{template "base/alert" .}}
+							{{if .DisableRegistration}}
+								<p>{{.i18n.Tr "auth.disable_register_prompt"}}</p>
+							{{else}}
+								<div class="required inline field {{if .Err_UserName}}error{{end}}">
+									<label for="user_name">{{.i18n.Tr "username"}}</label>
+									<input id="user_name" name="user_name" value="{{.user_name}}" autofocus required>
+								</div>
+								<div class="required inline field {{if .Err_Email}}error{{end}}">
+									<label for="email">{{.i18n.Tr "email"}}</label>
+									<input id="email" name="email" type="email" value="{{.email}}" required>
+								</div>
+								<div class="required inline field {{if .Err_Password}}error{{end}}">
+									<label for="password">{{.i18n.Tr "password"}}</label>
+									<input id="password" name="password" type="password" value="{{.password}}" required>
+								</div>
+								<div class="required inline field {{if .Err_Password}}error{{end}}">
+									<label for="retype">{{.i18n.Tr "re_type"}}</label>
+									<input id="retype" name="retype" type="password" value="{{.retype}}" required>
+								</div>
+								{{if .EnableCaptcha}}
+									<div class="inline field">
+										<label></label>
+										{{.Captcha.CreateHtml}}
+									</div>
+									<div class="required inline field {{if .Err_Captcha}}error{{end}}">
+										<label for="captcha">{{.i18n.Tr "captcha"}}</label>
+										<input id="captcha" name="captcha" value="{{.captcha}}" autocomplete="off">
+									</div>
+								{{end}}
 
-						<div class="inline field">
-							<label></label>
-							<button class="btn btn-info">{{.i18n.Tr "auth.create_new_account"}}</button>
+								<div class="inline field">
+									<label></label>
+									<button class="btn btn-info">{{.i18n.Tr "auth.create_new_account"}}</button>
+								</div>
+								<div class="inline field">
+									<label></label>
+									<a href="{{AppSubURL}}/user/login">{{.i18n.Tr "auth.register_hepler_msg"}}</a>
+								</div>
+							{{end}}
 						</div>
-						<div class="inline field">
-							<label></label>
-							<a href="{{AppSubURL}}/user/login">{{.i18n.Tr "auth.register_hepler_msg"}}</a>
-						</div>
-					{{end}}
+					</form>
 				</div>
-			</form>
+			</div>
 		</div>
-	</div>
-</div>
-{{template "base/footer" .}}
+		{{template "base/footer" .}}

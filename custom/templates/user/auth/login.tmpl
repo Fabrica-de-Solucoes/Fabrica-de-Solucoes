@@ -1,74 +1,78 @@
 {{template "base/head" .}}
-	<div class="user signin">
-		<div class="text-center">
-		
-		 <div class="col align-self-center">
-				<form class="form-signin" action="{{.Link}}" method="post">
-					{{.CSRFTokenHTML}}
-					<font color="White">
-					<h3 class="cabe">
-						{{.i18n.Tr "sign_in"}}
-					</h3>
-					</font>
-					<div class="ui attached segment">
-						{{template "base/alert" .}}
-						<div class="required inline field {{if .Err_UserName}}error{{end}}">
-							<label for="Nome">{{.i18n.Tr "username"}}</label>
-							<input class="form25" id="user_name"  name="user_name" placeholder="{{.i18n.Tr "home.uname_holder"}}" value="{{.user_name}}" autofocus required>    
+<div class="user signin">
+	<div class="text-center">
 
-						</div>
-						<div class="required inline field {{if .Err_Password}}error{{end}}" >
-							<label for="Senha">{{.i18n.Tr "password"}}</label>
-							<input id="password" name="password" type="password" autocomplete="off" value="{{.password}}" placeholder="digite a senha" required>
-						</div>
-						{{if .LoginSources}}
-							<div class="required inline field {{if .Err_LoginSource}}error{{end}}">
-								<label>{{.i18n.Tr "auth.auth_source"}}</label>
-								<div class="ui selection dropdown">
-									<input type="hidden" id="login_source" name="login_source" value="{{.login_source}}" required>
-									<span class="text">
-										{{if .DefaultLoginSource}}
-											{{.DefaultLoginSource.Name}}
-										{{else}}
-											{{.i18n.Tr "auth.local"}}
-										{{end}}
-									</span>
-									<i class="dropdown icon"></i>
-									<div class="menu">
-										<div class="item" data-value="0">{{.i18n.Tr "auth.local"}}</div>
-										{{range .LoginSources}}
-											<div class="item" data-value="{{.ID}}">{{.Name}}</div>
-										{{end}}
-									</div>
+		<div class="col align-self-center">
+			<form class="form-signin login" action="{{.Link}}" method="post">
+				{{.CSRFTokenHTML}}
+
+				<center>
+					<font color="White">
+						<h3 class="cabe login">
+							{{.i18n.Tr "sign_in"}}
+						</h3>
+
+					</font>
+				</center>
+				<div class="ui attached segment">
+					{{template "base/alert" .}}
+					<div class="required inline field {{if .Err_UserName}}error{{end}}">
+						<label for="Nome">{{.i18n.Tr "username"}}</label>
+						<input class="form25" id="user_name"  name="user_name" placeholder="{{.i18n.Tr "home.uname_holder"}}" value="{{.user_name}}" autofocus required>
+
+					</div>
+					<div class="required inline field {{if .Err_Password}}error{{end}}" >
+						<label for="Senha">{{.i18n.Tr "password"}}</label>
+						<input id="password" name="password" type="password" autocomplete="off" value="{{.password}}" placeholder="digite a senha" required>
+					</div>
+					{{if .LoginSources}}
+						<div class="required inline field {{if .Err_LoginSource}}error{{end}}">
+							<label>{{.i18n.Tr "auth.auth_source"}}</label>
+							<div class="ui selection dropdown">
+								<input type="hidden" id="login_source" name="login_source" value="{{.login_source}}" required>
+								<span class="text">
+									{{if .DefaultLoginSource}}
+										{{.DefaultLoginSource.Name}}
+									{{else}}
+										{{.i18n.Tr "auth.local"}}
+									{{end}}
+								</span>
+								<i class="dropdown icon"></i>
+								<div class="menu">
+									<div class="item" data-value="0">{{.i18n.Tr "auth.local"}}</div>
+									{{range .LoginSources}}
+										<div class="item" data-value="{{.ID}}">{{.Name}}</div>
+									{{end}}
 								</div>
 							</div>
-						{{end}}
-						
-						<div class="inline field">
-							<label></label>
-
-							<div class="f3">
-								<label>{{.i18n.Tr "auth.remember_me"}}</label>
-								<input class="f3" name="remember" type="checkbox">
-							</div>
 						</div>
+					{{end}}
 
-						<div class="inline field">
-							<label></label>
-							<button class="btn btn-info">{{.i18n.Tr "sign_in"}}</button>
-							<a href="{{AppSubURL}}/user/forget_password">{{.i18n.Tr "auth.forget_password"}}</a>
+					<div class="inline field">
+						<label></label>
+
+						<div class="f3">
+							<label>{{.i18n.Tr "auth.remember_me"}}</label>
+							<input class="f3" name="remember" type="checkbox">
 						</div>
-						{{if .ShowRegistrationButton}}
-							<div class="inline field">
-								<label></label>
-								<a href="{{AppSubURL}}/user/sign_up">{{.i18n.Tr "auth.sign_up_now" | Str2HTML}}</a>
-							</div>
-						{{end}}
 					</div>
-				</form>
+
+					<div class="inline field">
+						<label></label>
+						<button class="btn btn-info">{{.i18n.Tr "sign_in"}}</button>
+						<a href="{{AppSubURL}}/user/forget_password">{{.i18n.Tr "auth.forget_password"}}</a>
+					</div>
+					{{if .ShowRegistrationButton}}
+						<div class="inline field">
+							<label></label>
+							<a href="{{AppSubURL}}/user/sign_up">{{.i18n.Tr "auth.sign_up_now" | Str2HTML}}</a>
+						</div>
+					{{end}}
 				</div>
-			</div>
+			</form>
 		</div>
 	</div>
-	
+</div>
+</div>
+
 {{template "base/footer" .}}
